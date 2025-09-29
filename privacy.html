@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Aegis Scan</title>
+  <meta name="description" content="Aegis Scan is a privacy‑first PDF inspection API. This privacy policy explains what we do and do not collect." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 216 216'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230b1220'/><stop offset='100%' stop-color='%236366f1'/></linearGradient></defs><path d='M108 12 L188 56 L156 172 L60 172 L28 56 Z' fill='url(%23g)'/><path d='M108 44 L72 172 L144 172 Z' fill='%23ffffff' opacity='0.94'/><rect x='92' y='120' width='32' height='18' rx='2' fill='%230b1220' opacity='0.9'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="border-b bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight">Aegis Scan</a>
+      <nav class="text-sm text-slate-600">
+        <a class="hover:text-slate-900" href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold tracking-tight">Privacy Policy</h1>
+    <p class="mt-2 text-sm text-slate-500">Last updated: 2025-09-29</p>
+
+    <p class="mt-6 text-slate-700">Aegis Scan is a privacy‑first API that performs static inspection of uploaded PDF files to identify risky features (e.g., JavaScript, embedded files, encryption). This policy explains what data we process, how we handle it, and your choices.</p>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">1. What we process</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-1">
+        <li><span class="font-medium">Uploaded files:</span> Files are received solely to perform the requested inspection and are <span class="font-medium">not retained</span> after the response is produced.</li>
+        <li><span class="font-medium">Derived metadata:</span> We compute flags/metrics (e.g., <code>has_javascript</code>, <code>risk_score</code>) and return them in the API response. We may aggregate anonymous metrics for service quality (e.g., counts of feature flags).</li>
+        <li><span class="font-medium">Operational logs:</span> Minimal request metadata is logged for abuse prevention and rate‑limiting (timestamp, API key ID, IP hash, request path, response status, latency). No file contents are stored in logs.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">2. Retention</h2>
+      <p class="mt-3 text-slate-700">Uploaded files are processed in memory/ephemeral storage and discarded immediately after analysis completes. Operational logs are retained for a limited period needed to enforce rate limits, detect abuse, and operate the service.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">3. Security</h2>
+      <p class="mt-3 text-slate-700">Transport security (HTTPS) is required. Access is authenticated with API keys. Internal access to operational data is restricted. We periodically review dependencies and infrastructure configurations. Report issues via <a class="underline" href="mailto:hello@aegisscan.dev">hello@aegisscan.dev</a> or our <a class="underline" href="/.well-known/security.txt">security.txt</a>.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">4. Cookies & tracking</h2>
+      <p class="mt-3 text-slate-700">Our static marketing site may use basic analytics (page views, referrers). The API endpoints themselves do not use cookies.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">5. Children’s privacy</h2>
+      <p class="mt-3 text-slate-700">The service is intended for business and developer use. We do not knowingly collect personal data from children.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">6. International use</h2>
+      <p class="mt-3 text-slate-700">We may process data in the region where our hosting provider operates. Business plan customers may request region‑specific endpoints.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">7. Your choices</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-1">
+        <li>Do not send personal data unless necessary. Prefer redacted or test files.</li>
+        <li>Use your API key management to rotate/disable keys at any time.</li>
+        <li>Contact us for questions or deletion requests relating to operational logs.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">8. Contact</h2>
+      <p class="mt-3 text-slate-700">Email: <a class="underline" href="mailto:hello@aegisscan.dev">hello@aegisscan.dev</a></p>
+    </section>
+
+    <section class="mt-10 text-xs text-slate-500">
+      <p>This document is provided for informational purposes and does not constitute legal advice. Your use of the service is governed by the Terms of Service.</p>
+    </section>
+  </main>
+
+  <footer class="border-t bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-sm text-slate-600 flex items-center justify-between">
+      <span>© <span id="year"></span> Aegis Scan</span>
+      <span class="space-x-4">
+        <a class="hover:text-slate-900" href="privacy.html">Privacy</a>
+        <a class="hover:text-slate-900" href="terms.html">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
