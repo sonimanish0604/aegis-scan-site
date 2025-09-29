@@ -1,0 +1,32 @@
+# security.txt for Aegis Scan (per RFC 9116)
+
+# Place this file at: /.well-known/security.txt
+
+# Example GitHub Pages repo layout:
+
+# / (repo root)
+
+# ├── .well-known/
+
+# │   └── security.txt
+
+# └── .nojekyll   <-- add this file so GitHub Pages serves dot-folders as-is
+
+Contact: mailto:hello@aegisscan.dev
+Preferred-Languages: en
+
+# If you host on your own domain, update Canonical accordingly
+
+Canonical: [https://aegisscan.dev/.well-known/security.txt](https://aegisscan.dev/.well-known/security.txt)
+
+# Optionally point to a security policy page (we reuse data-handling for now)
+
+Policy: [https://aegisscan.dev/data-handling.html](https://aegisscan.dev/data-handling.html)
+
+# If you publish a PGP key for encrypted reports, add:
+
+# Encryption: [https://aegisscan.dev/pgp.txt](https://aegisscan.dev/pgp.txt)
+
+# Set an expiry in the future; update when details change
+
+Expires: 2026-09-29T23:59:00Z
