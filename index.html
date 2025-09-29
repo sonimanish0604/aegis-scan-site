@@ -23,10 +23,24 @@
   <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-3">
-        <a href="#" class="flex items-center gap-2">
-          <span class="text-2xl">🛡️</span>
-          <span class="font-semibold tracking-tight">Aegis Scan</span>
-        </a>
+        <a href="#" class="flex items-center gap-2" aria-label="aegissolutions home">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" class="h-8 w-auto" role="img" aria-label="aegissolutions">
+    <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0b1220"/>
+        <stop offset="100%" stop-color="#6366f1"/>
+      </linearGradient>
+    </defs>
+    <!-- Icon: shield with negative-space A -->
+    <g transform="translate(20,20)">
+      <path d="M108 0 L188 44 L156 160 L60 160 L28 44 Z" fill="url(#grad)"/>
+      <path d="M108 36 L72 164 L144 164 Z" fill="#ffffff" opacity="0.92"/>
+      <rect x="92" y="112" width="32" height="16" rx="2" fill="#0b1220" opacity="0.9"/>
+    </g>
+    <!-- Wordmark -->
+    <text x="220" y="110" font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="56" letter-spacing="1" fill="#0b1220">aegis<tspan fill="#6366f1">solutions</tspan></text>
+  </svg>
+</a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#features" class="hover:text-slate-700">Features</a>
           <a href="#how" class="hover:text-slate-700">How it works</a>
