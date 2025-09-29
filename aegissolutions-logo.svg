@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180" viewBox="0 0 640 180" role="img" aria-labelledby="title">
+  <title id="title">aegissolutions logo</title>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: shield with negative-space A -->
+  <g transform="translate(20,20)">
+    <!-- Shield -->
+    <path d="M108 0 L188 44 L156 160 L60 160 L28 44 Z" fill="url(#grad)"/>
+    <!-- Stylized 'A' -->
+    <path d="M108 36 L72 164 L144 164 Z" fill="#ffffff" opacity="0.92"/>
+    <rect x="92" y="112" width="32" height="16" rx="2" fill="#0b1220" opacity="0.9"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="220" y="110"
+        font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="56" letter-spacing="1"
+        fill="#0b1220">aegis<tspan fill="#6366f1">solutions</tspan></text>
+</svg>
