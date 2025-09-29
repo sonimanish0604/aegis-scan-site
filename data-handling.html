@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Handling — Aegis Scan</title>
+  <meta name="description" content="How Aegis Scan processes, secures, and retains data." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 216 216'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230b1220'/><stop offset='100%' stop-color='%236366f1'/></linearGradient></defs><path d='M108 12 L188 56 L156 172 L60 172 L28 56 Z' fill='url(%23g)'/><path d='M108 44 L72 172 L144 172 Z' fill='%23ffffff' opacity='0.94'/><rect x='92' y='120' width='32' height='18' rx='2' fill='%230b1220' opacity='0.9'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="border-b bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight">Aegis Scan</a>
+      <nav class="text-sm text-slate-600 space-x-4">
+        <a class="hover:text-slate-900" href="privacy.html">Privacy</a>
+        <a class="hover:text-slate-900" href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold tracking-tight">Data Handling</h1>
+    <p class="mt-2 text-sm text-slate-500">Last updated: 2025-09-29</p>
+
+    <p class="mt-6 text-slate-700">This page explains how Aegis Scan processes files and related metadata when you call the API, including retention, locations, and security controls.</p>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">1. Scope & Purpose</h2>
+      <p class="mt-3 text-slate-700">Aegis Scan performs static inspection of PDF files to identify risky features (e.g., JavaScript, embedded files, encryption, external links). We provide a structured JSON result so you can automate allow/deny actions.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">2. What We Process</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-2">
+        <li><span class="font-medium">Uploaded files:</span> received solely to perform analysis and <span class="font-medium">not retained</span> after the response is produced.</li>
+        <li><span class="font-medium">Derived metadata:</span> flags and counts returned in the API response (e.g., <code>has_javascript</code>, <code>risk_score</code>, <code>details.urls</code>).</li>
+        <li><span class="font-medium">Operational logs:</span> minimal request metadata for reliability and abuse prevention (e.g., timestamp, API key ID, IP hash, route, status, latency). No file contents are stored in logs.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">3. Retention</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-2">
+        <li><span class="font-medium">Files:</span> processed in memory/ephemeral storage and discarded immediately after analysis completes.</li>
+        <li><span class="font-medium">Operational logs:</span> retained for up to <span class="font-medium">30 days</span> to enforce rate limits, investigate abuse, and operate the service.</li>
+        <li><span class="font-medium">Aggregated metrics:</span> may be kept in anonymized/aggregated form for service quality and capacity planning.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">4. Locations (Data Residency)</h2>
+      <p class="mt-3 text-slate-700">By default, processing occurs in the region where our hosting is deployed. Business plan customers may request region‑specific endpoints.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">5. Security Controls</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-2">
+        <li>Transport security via HTTPS; API authentication via keys.</li>
+        <li>Least‑privilege access to operational data; secrets stored in provider secret stores.</li>
+        <li>Dependency and configuration reviews; rate‑limiting and abuse detection.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">6. Subprocessors</h2>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-2">
+        <li><span class="font-medium">Hosting:</span> Render (application/API hosting).</li>
+        <li><span class="font-medium">Caching/rate‑limiting:</span> Managed Redis (environment‑specific).</li>
+        <li>We do not use third‑party storage for uploaded file contents.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">7. Incident Reporting</h2>
+      <p class="mt-3 text-slate-700">Report security issues to <a class="underline" href="mailto:hello@aegisscan.dev">hello@aegisscan.dev</a> and see our <a class="underline" href="/.well-known/security.txt">security.txt</a> for contact and coordination details.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold">8. Changes</h2>
+      <p class="mt-3 text-slate-700">Material changes will be noted on this page and may be announced on release notes.</p>
+    </section>
+  </main>
+
+  <footer class="border-t bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-sm text-slate-600 flex items-center justify-between">
+      <span>© <span id="year"></span> Aegis Scan</span>
+      <span class="space-x-4">
+        <a class="hover:text-slate-900" href="privacy.html">Privacy</a>
+        <a class="hover:text-slate-900" href="terms.html">Terms</a>
+        <a class="hover:text-slate-900" href="data-handling.html">Data Handling</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
