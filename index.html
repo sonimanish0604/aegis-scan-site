@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aegis Scan — Fast PDF Threat & Policy Analyzer API</title>
+  <meta name="description" content="Aegis Scan is a fast, privacy‑first API that inspects PDFs for risky content (JavaScript, embedded files, encryption, spoofed MIME) and returns structured results in milliseconds." />
+  <meta property="og:title" content="Aegis Scan — Fast PDF Threat & Policy Analyzer API" />
+  <meta property="og:description" content="Detects JavaScript, embedded files, encryption, spoofed MIME, and more. Built for SOC teams, privacy engineers, and platform security." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b1220/ffffff&text=Aegis+Scan" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><text y='50%' x='50%' dominant-baseline='middle' text-anchor='middle' font-size='140'>🛡️</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    /* Prism-ish minimal code style */
+    pre{background:#0b1220;color:#e5e7eb;border-radius:12px;padding:16px;overflow:auto}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Top Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-3">
+        <a href="#" class="flex items-center gap-2">
+          <span class="text-2xl">🛡️</span>
+          <span class="font-semibold tracking-tight">Aegis Scan</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#features" class="hover:text-slate-700">Features</a>
+          <a href="#how" class="hover:text-slate-700">How it works</a>
+          <a href="#api" class="hover:text-slate-700">API</a>
+          <a href="#pricing" class="hover:text-slate-700">Pricing</a>
+          <a href="#faq" class="hover:text-slate-700">FAQ</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/sonimanish0604/aegisdocs-rebuilt" target="_blank" class="hidden sm:inline-flex items-center rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-50">GitHub</a>
+          <a href="#get-key" class="inline-flex items-center rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-black">Get API Key</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-16 lg:py-24 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">Scan PDFs for threats & risky features via a simple API</h1>
+          <p class="mt-5 text-lg text-slate-600">Detect JavaScript, embedded files, encryption/passwords, external URLs, suspicious MIME, and more. Get JSON in milliseconds. Privacy‑first, no retention.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#api" class="rounded-xl bg-slate-900 text-white px-5 py-3 text-sm font-medium hover:bg-black">View API</a>
+            <a href="#demo" class="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-slate-50">Try cURL demo</a>
+          </div>
+          <div class="mt-6 text-xs text-slate-500">Deployed on Render • Redis rate limiting • Built with FastAPI</div>
+        </div>
+        <div class="relative">
+          <div class="rounded-2xl border bg-white p-6 shadow-sm">
+            <h3 class="font-semibold mb-3">Example response</h3>
+            <pre><code>{
+  "file_name": "contract.pdf",
+  "has_javascript": true,
+  "has_embedded_files": false,
+  "is_encrypted": false,
+  "has_external_links": true,
+  "mime_mismatch": false,
+  "risk_score": 72,
+  "flags": ["javascript", "external_links"],
+  "details": {"urls": ["http://example.com"], "objects": []}
+}</code></pre>
+            <p class="mt-3 text-xs text-slate-500">Fields may vary based on engine version.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos / Social proof (optional) -->
+  <section class="py-6">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 text-slate-500">
+        <span class="text-xs uppercase tracking-widest">Built for SOC • Privacy • Platforms</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-16 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold tracking-tight">What Aegis Scan detects</h2>
+        <p class="mt-3 text-slate-600">Fast static inspection designed to stop risky PDFs before they enter your environment.</p>
+      </div>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">JavaScript in PDFs</h3>
+          <p class="mt-2 text-sm text-slate-600">Flags document‑level JS, OpenAction, and launch actions that can trigger on open.</p>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">Embedded files & objects</h3>
+          <p class="mt-2 text-sm text-slate-600">Detects attachments (e.g., .exe, .docm), embedded streams, and launchable content.</p>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">Encryption & passwords</h3>
+          <p class="mt-2 text-sm text-slate-600">Identifies encrypted/passworded PDFs; return actionable status for mailroom workflows.</p>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">External links</h3>
+          <p class="mt-2 text-sm text-slate-600">Extracts and counts external URLs for allow/deny decisions; optional domain summary.</p>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">MIME/type mismatch</h3>
+          <p class="mt-2 text-sm text-slate-600">Flags spoofed or malformed files masquerading as PDFs.</p>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-50">
+          <h3 class="font-semibold">Rate limits & keys</h3>
+          <p class="mt-2 text-sm text-slate-600">Per‑key limits with free, trial, and paid tiers. JSON error envelopes for easy handling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section id="how" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-1">
+          <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
+          <p class="mt-3 text-slate-600">Send a PDF via multipart POST. Receive a structured JSON verdict you can enforce in content gateways, intake forms, or data privacy workflows.</p>
+        </div>
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+          <div class="rounded-2xl border p-6 bg-white">
+            <div class="text-sm font-semibold">1) Upload</div>
+            <p class="mt-2 text-sm text-slate-600">POST <code>/analyze-pdf</code> with your API key and file.</p>
+          </div>
+          <div class="rounded-2xl border p-6 bg-white">
+            <div class="text-sm font-semibold">2) Inspect</div>
+            <p class="mt-2 text-sm text-slate-600">Engine parses structure and inspects flags without retaining file content.</p>
+          </div>
+          <div class="rounded-2xl border p-6 bg-white">
+            <div class="text-sm font-semibold">3) Score</div>
+            <p class="mt-2 text-sm text-slate-600">Risk score + granular flags help automated routing and user prompts.</p>
+          </div>
+          <div class="rounded-2xl border p-6 bg-white">
+            <div class="text-sm font-semibold">4) Act</div>
+            <p class="mt-2 text-sm text-slate-600">Block, quarantine, request a clean copy, or continue with redaction/CDR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API -->
+  <section id="api" class="py-16 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight">API</h2>
+          <p class="mt-3 text-slate-600">Minimal REST interface. Authenticate with <code>X-API-Key</code>. Request up to 25 MB per file (configurable).</p>
+
+          <h3 class="mt-6 font-semibold">Endpoint</h3>
+          <pre><code>POST /analyze-pdf
+Headers:
+  accept: application/json
+  X-API-Key: &lt;YOUR_KEY&gt;
+Multipart Form:
+  file: @/path/to/file.pdf</code></pre>
+
+          <h3 class="mt-6 font-semibold">cURL</h3>
+          <pre id="demo"><code>curl -X POST "https://YOUR-RENDER-URL/analyze-pdf" \
+  -H "accept: application/json" \
+  -H "X-API-Key: YOUR_KEY" \
+  -F "file=@/path/to/sample.pdf"</code></pre>
+
+          <div class="mt-3 flex gap-3">
+            <button id="copyCurl" class="rounded-lg border px-3 py-2 text-sm hover:bg-slate-50">Copy cURL</button>
+            <a href="#get-key" class="rounded-lg bg-slate-900 text-white px-3 py-2 text-sm hover:bg-black">Get a test key</a>
+          </div>
+
+          <h3 class="mt-6 font-semibold">Error format</h3>
+          <pre><code>{
+  "detail": "Invalid or missing API Key"
+}</code></pre>
+
+          <p class="mt-3 text-xs text-slate-500">SDKs: Python & JavaScript examples coming soon.</p>
+        </div>
+        <div>
+          <div class="rounded-2xl border p-6 bg-slate-50">
+            <h3 class="font-semibold">Response fields</h3>
+            <ul class="mt-3 grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
+              <li><code>has_javascript</code></li>
+              <li><code>has_embedded_files</code></li>
+              <li><code>is_encrypted</code></li>
+              <li><code>has_external_links</code></li>
+              <li><code>mime_mismatch</code></li>
+              <li><code>risk_score</code></li>
+              <li><code>flags</code></li>
+              <li><code>details.urls</code></li>
+            </ul>
+            <p class="mt-3 text-sm text-slate-600">Exact fields may vary between versions; see release notes.</p>
+          </div>
+
+          <div class="rounded-2xl border p-6 bg-white mt-6">
+            <h3 class="font-semibold">Status</h3>
+            <div class="mt-2 text-sm text-slate-600">Uptime: Render • Region: US • Planned: EU</div>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-md bg-emerald-100 text-emerald-800 px-2 py-1">Rate‑limited</span>
+              <span class="inline-flex items-center rounded-md bg-blue-100 text-blue-800 px-2 py-1">No retention</span>
+              <span class="inline-flex items-center rounded-md bg-amber-100 text-amber-800 px-2 py-1">Beta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight">Simple, usage‑based pricing</h2>
+        <p class="mt-3 text-slate-600">Start free. Upgrade when you need higher limits or SLAs.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border p-6 bg-white">
+          <h3 class="font-semibold">Free</h3>
+          <p class="text-sm text-slate-600">For personal/dev use</p>
+          <div class="mt-4 text-3xl font-bold">$0</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>• 200 scans / month</li>
+            <li>• 1 MB max file</li>
+            <li>• Community support</li>
+          </ul>
+          <a href="#get-key" class="mt-6 inline-block rounded-xl bg-slate-900 text-white px-4 py-2 text-sm hover:bg-black">Get started</a>
+        </div>
+        <div class="rounded-2xl border p-6 bg-slate-900 text-white ring-2 ring-slate-900">
+          <h3 class="font-semibold">Pro</h3>
+          <p class="text-sm text-slate-300">For startups & teams</p>
+          <div class="mt-4 text-3xl font-bold">$29/mo</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-100">
+            <li>• 5k scans / month</li>
+            <li>• 10 MB max file</li>
+            <li>• Email support</li>
+          </ul>
+          <a href="#get-key" class="mt-6 inline-block rounded-xl bg-white text-slate-900 px-4 py-2 text-sm hover:bg-slate-100">Upgrade</a>
+        </div>
+        <div class="rounded-2xl border p-6 bg-white">
+          <h3 class="font-semibold">Business</h3>
+          <p class="text-sm text-slate-600">For platforms & SOC</p>
+          <div class="mt-4 text-3xl font-bold">Contact</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>• Custom limits</li>
+            <li>• Region control</li>
+            <li>• SLA & support</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-block rounded-xl border px-4 py-2 text-sm hover:bg-slate-50">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold tracking-tight">FAQ</h2>
+        <div class="mt-8 space-y-6">
+          <details class="rounded-xl border p-4 bg-slate-50">
+            <summary class="font-medium cursor-pointer">Do you store files?</summary>
+            <p class="mt-3 text-sm text-slate-700">No. Files are streamed for inspection and not retained. Minimal logs store request metadata for rate‑limiting and abuse prevention.</p>
+          </details>
+          <details class="rounded-xl border p-4 bg-slate-50">
+            <summary class="font-medium cursor-pointer">What is the max file size?</summary>
+            <p class="mt-3 text-sm text-slate-700">Defaults shown above. For Business plans we can lift limits or offer region‑specific endpoints.</p>
+          </details>
+          <details class="rounded-xl border p-4 bg-slate-50">
+            <summary class="font-medium cursor-pointer">Roadmap?</summary>
+            <p class="mt-3 text-sm text-slate-700">Planned: AI labeler (BERT‑lite) for policy sections; optional CDR integrations; allow/deny URL lists.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section id="contact" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border p-8 bg-slate-900 text-white grid lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold">Ready to try Aegis Scan?</h2>
+          <p class="mt-2 text-slate-300">Request a key or talk to us about SOC and privacy workflows.</p>
+        </div>
+        <div id="get-key" class="flex gap-3">
+          <a href="mailto:hello@aegisscan.dev" class="flex-1 text-center rounded-xl bg-white text-slate-900 px-4 py-3 font-medium hover:bg-slate-100">Request API Key</a>
+          <a href="https://github.com/sonimanish0604/aegisdocs-rebuilt" target="_blank" class="flex-1 text-center rounded-xl border border-white/30 px-4 py-3 font-medium hover:bg-white/10">View Repo</a>
+        </div>
+      </div>
+      <p class="mt-6 text-center text-xs text-slate-500">© <span id="year"></span> Aegis Scan. All rights reserved. • <a class="underline" href="#">Privacy</a> • <a class="underline" href="#">Terms</a></p>
+    </div>
+  </section>
+
+  <script>
+    // Copy cURL
+    document.getElementById('copyCurl')?.addEventListener('click', () => {
+      const text = document.querySelector('#demo code').innerText
+      navigator.clipboard.writeText(text)
+        .then(() => alert('cURL copied to clipboard'))
+        .catch(() => alert('Could not copy'))
+    })
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
